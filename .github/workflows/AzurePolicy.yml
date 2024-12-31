@@ -1,3 +1,4 @@
+
 name: Azure Policies
 on:
   workflow_dispatch:
@@ -43,4 +44,7 @@ jobs:
         run: terraform apply -auto-approve
 
       - name: Terraform Output
-        run: terraform output
+        run: |
+          terraform output
+          echo "This script encountered an error."
+          exit 1  # If you really want to force a failure after output
